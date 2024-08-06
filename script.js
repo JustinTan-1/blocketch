@@ -9,4 +9,4 @@ function createBoxes(number) {
   });
 }
 
-createBoxes(16);
+createBoxes(256);
