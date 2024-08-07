@@ -29,9 +29,17 @@
   border: 3px solid red;
 }
 
-.box {
+.blankBox {
   width: 50px;
   height: 50px;
   background-color: white;
   border: 1px solid black;
+}
+
+.hoverBlackBox {
+  background-color: black;
+}
+
+.permBlackBox {
+  background-color: black;
 }

@@ -19,9 +19,17 @@ function createBoxes(number) {
     container.appendChild(document.createElement("div"));
   }
   container.childNodes.forEach((element) => {
-    element.classList.add("box");
+    element.classList.add("blankBox");
     element.addEventListener("mouseover", () => {
-      element.style.backgroundColor = "black";
+      element.classList.add("hoverBlackBox");
+    });
+    element.addEventListener("mouseleave", () => {
+      element.classList.add("blankBox");
+      element.classList.remove("hoverBlackBox");
+    });
+    element.addEventListener("click", () => {
+      element.classList.add("permBlackBox");
+      element.style.opacity = "100%";
     });
   });
 }
