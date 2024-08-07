@@ -22,8 +22,8 @@
   display: flex;
   justify-content: center;
   align-content: flex-start;
-  width: 840px;
-  height: 840px;
+  width: 800px;
+  height: 800px;
   flex-wrap: wrap;
   row-gap: 0px;
   border: 3px solid red;
@@ -33,13 +33,12 @@
   width: 50px;
   height: 50px;
   background-color: white;
-  border: 1px solid black;
-}
-
-.hoverBlackBox {
-  background-color: black;
 }
 
 .permBlackBox {
+  background-color: black;
+}
+
+.hoverBlackBox {
   background-color: black;
 }
