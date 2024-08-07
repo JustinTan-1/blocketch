@@ -21,7 +21,7 @@ function changeGrid() {
     let newBoxLength = 800 / sideNum;
     createBoxes(newBoxLength);
   } else {
-    alert("TOO MANY BOXES");
+    alert("ERROR");
   }
 }
 
@@ -40,7 +40,7 @@ function createBoxes(length) {
     element.addEventListener("mouseleave", () => {
       element.classList.remove("hoverBlackBox");
     });
-    element.addEventListener("click", () => {
+    element.addEventListener("mousedown", () => {
       element.classList.remove("blankBox");
       element.classList.add("permBlackBox");
       element.style.opacity = "100%";
