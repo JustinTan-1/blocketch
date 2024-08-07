@@ -9,7 +9,7 @@ changeGridButton.addEventListener("click", (e) => {
 
 function changeGrid() {
   let sideNum = parseInt(
-    prompt("How many squares would you like on each edge?")
+    prompt("How many squares would you like on each edge? (Max 100)")
   );
   if (parseInt(sideNum) <= 100) {
     let child = container.lastElementChild;
@@ -20,6 +20,8 @@ function changeGrid() {
 
     let newBoxLength = 800 / sideNum;
     createBoxes(newBoxLength);
+  } else {
+    alert("TOO MANY BOXES");
   }
 }
 
