@@ -1,5 +1,15 @@
 const container = document.querySelector(".container");
 const changeGridButton = document.querySelector(".changeGrid");
+const selectors = document.querySelectorAll(".selector");
+
+let pixelColor = "black";
+
+selectors.forEach((selector) => {
+  selector.addEventListener("click", () => {
+    let split = selector.className.split(" ");
+    pixelColor = split[0];
+  });
+});
 
 changeGridButton.addEventListener("click", (e) => {
   if (e.target.classList == "changeGrid") {
@@ -41,8 +51,8 @@ function createBoxes(length) {
       element.classList.remove("hoverBlackBox");
     });
     element.addEventListener("mousedown", () => {
-      element.classList.remove("blankBox");
-      element.classList.add("permBlackBox");
+      element.classList.remove(...element.classList);
+      element.classList.add(pixelColor);
       element.style.opacity = "100%";
     });
   });

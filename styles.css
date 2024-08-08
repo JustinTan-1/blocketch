@@ -8,7 +8,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 100px;
+  gap: 50px;
 }
 
 .changeGrid {
@@ -29,16 +29,43 @@
   border: 3px solid red;
 }
 
+.colors {
+  display: flex;
+  gap: 10px;
+}
+
+.selector {
+  width: 50px;
+  height: 50px;
+  border: 3px solid black;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
 .blankBox {
   width: 50px;
   height: 50px;
   background-color: white;
 }
 
-.permBlackBox {
+.black {
   background-color: black;
 }
 
 .hoverBlackBox {
-  background-color: black;
+  background-color: lightgrey;
 }
