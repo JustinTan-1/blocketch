@@ -53,7 +53,6 @@ function createBoxes(length) {
     element.addEventListener("mousedown", () => {
       element.classList.remove(...element.classList);
       element.classList.add(pixelColor);
-      element.style.opacity = "100%";
     });
   });
 }
