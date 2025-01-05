@@ -13,10 +13,13 @@
 .pixel {
   border: 1px solid black;
 }
+
+.pixel:hover {
+  background-color: lightgray;
+}
 .grid {
   width: 50vw;
   height: 50vw;
-  border: 3px solid red
 }
 
 

@@ -28,31 +28,7 @@ function changeColor(color) {
 }
 
 function generateBox() {
-  return {color: color, id: nanoid()}
-}
-
-function hover(id) {
-  setGrid((oldGrid) => {
-    return (
-    oldGrid.map((box) => {
-      return (
-      box.id == id ? {...box, hoverColor: "grey"} : {...box}
-      )
-    })
-  )
-  })
-}
-
-function leave(id) {
-  setGrid((oldGrid) => {
-    return (
-    oldGrid.map((box) => {
-      return (
-      box.id == id ? {...box, hoverColor: null} : {...box}
-      )
-    })
-  )
-  })
+  return {color: "white", id: nanoid()}
 }
 
 function generateArray(gridSize) {
@@ -80,7 +56,7 @@ function handleChange(e) {
 }
 
   const diceArray = grid.map((element) => {
-    return(<Pixel key={element.id} size = {gridSize} color={element.color} paintBox={() => paintBox(element.id)} hover={() => hover(element.id)} leave = {() => leave(element.id)} hoverColor={element.hoverColor}></Pixel>)
+    return(<Pixel key={element.id} size = {gridSize} color={element.color} paintBox={() => paintBox(element.id)}></Pixel>)
   })  
 
 
