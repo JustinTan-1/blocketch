@@ -11,8 +11,29 @@ cors = CORS(app, origins="*")
 conn = psycopg2.connect(database="users", port="5432")
 cur = conn.cursor()
 
-@app.route("/api/login", methods=["POST","GET"])
-def test():
+@app.route("/api/register", methods=["POST"])
+def register():
+    if request.method == "POST":
+        data = request.get_json()
+        username = data.get("username")
+        password = data.get("password")
+        confirm = data.get("confirm")
+        if not username or " " in username:
+            return jsonify({"error": "Please Enter a Valid Username"})
+        if not password or " " in password:
+            return jsonify({"error": "Please Enter a Valid Password"})
+        if not confirm == password:
+            return jsonify({"error": "Passwords do not match"})
+        try:
+            cur.execute("INSERT INTO users (username, hash) VALUES (%s, %s)", (username, generate_password_hash(password)))
+        except UniqueViolation:
+             conn.rollback()
+             return jsonify({"error": "Username already exists"})
+        conn.commit()
+        return jsonify({"success": "Successfully Registered!", "username": username})
+    
+@app.route("/api/login", methods=["POST"])
+def login():
     if request.method == "POST":
         data = request.get_json()
         username = data.get("username")
@@ -21,14 +42,10 @@ def test():
             return jsonify({"error": "Please Enter a Valid Username"})
         if not password or " " in password:
             return jsonify({"error": "Please Enter a Valid Password"})
-        try:
-            cur.execute("INSERT INTO users (username, hash) VALUES (%s, %s)", (username, generate_password_hash(password)))
-        except UniqueViolation:
-             conn.rollback()
-             return jsonify({"error": "Username already exists"})
-        conn.commit()
-        return jsonify({"success": "Successfully Registered!", "username": username})
-        
+        cur.execute("SELECT hash FROM users WHERE username = %s", (username,))
+        if not check_password_hash(cur.fetchone()[0], password):
+            return jsonify({"error": "Wrong Password"})
+        return jsonify({"success": "Successfully logged in!", "username": username})
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
